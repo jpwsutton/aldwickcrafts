@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('add_product') }}" method=post class=add-product>
+      <dl>
+        <dt>Title:
+        <dd><input type=text size=30 name=name>
+	<dt>Category:
+	<dd><input type=text size=30 name=category>
+        <dt>Text:
+        <dd><textarea name=description rows=5 cols=40></textarea>
+	<dt>Image Url:
+	<dd><input type=text size=50 name=image>
+	<dt>Price:
+	<dd><input type=text size=10 name=price>
+        <dd><input type=submit value=Share>
+      </dl>
+    </form>
+  {% endif %}
+  <ul class=products>
+  {% for product in products %}
+    <li><h2>{{ product.name }}</h2>{{ product.description|safe }}
+  {% else %}
+    <li><em>Unbelievable.  No products here so far</em>
+  {% endfor %}
+  </ul>
+{% endblock %}
