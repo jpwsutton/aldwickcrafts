@@ -38,33 +38,20 @@
     <article>
       <header>
         <h2>
-          <img src="images/example/header-logo.png" alt="Front" id="header-logo">
+            <img src="{{ url_for('static', filename='images/header_logo.png') }}" alt="Front" id="header-logo">
         </h2> 
-        <h1>Aldwick Crafts <span>
-
-                <a href="/" {% if request.page=="" %} class=active {% endif %}>Home</a>
-                <a href="/products" {% if request.page=="/products" %} class=active {% endif %}>Products</a>
-                {% if not session.logged_in %}
-                <a href="{{ url_for('login') }}">log in</a>
-                {% else %}
-                <a href="{{ url_for('logout') }}">log out</a>
-                {% endif %}
-       </span></h1>
+        <h1>Aldwick Crafts</h1>
       </header>
       
       <div id="main" role="main" class="cf">
-        {% for message in get_flashed_messages() %}
-        <div class=flash>{{ message }}</div>
-        {% endfor %}
-        {% block body %}{% endblock %}
-        
+        Aldwick Crafts is a small company based out of Aldwick, West Sussex.
+        We produce a range of home made decorations and gifts out of renewable materials sourced along the West Sussex Coast.
 
-        
-
+        <center>Website coming soon.</center>
       
     <footer class="cf"> 
       
-      <p>Aldwick Crafts Footer</p> 
+      <p>Aldwick Crafts 2014</p> 
     </footer>
     
       </div><!-- /main -->

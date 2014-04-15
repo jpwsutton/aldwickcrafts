@@ -46,6 +46,10 @@ def get_db():
     return g.sqlite_db
 
 @app.route('/')
+def show_about():
+    return render_template('about.html')
+
+@app.route('/home')
 def show_products():
     db = get_db()
     cur = db.execute('select name, description, category, image, price from products order by id desc')
@@ -83,9 +87,6 @@ def logout():
     session.pop('logged_in', None)
     flash('You were logged out')
     return redirect(url_for('show_products'))
-
-
-
 
 
 
